@@ -1,0 +1,21 @@
+nav {
+  background-color: #232f3e;
+  color: white;
+  & > div {
+    border: 1px solid #232f3e;
+    border-radius: 2px;
+    padding: 0.5rem;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  & > div:hover {
+    border-color: white;
+  }
+}
+
+nav > div:last-child {
+  position: absolute;
+  right: 0;
+  transform: scaleY(0.90);
+}

@@ -1,14 +1,27 @@
+nav {
+  background-color: #131921;
+}
+
+.hover-effect {
+  border: 1px solid #131921;
+  border-radius: 2px;
+}
+
+.hover-effect:hover {
+  border-color: white;
+}
+
 .thin-txt {
-    line-height: 15px;
-    font-size: 12px;
+  line-height: 15px;
+  font-size: 12px;
 }
 
 .bold-txt {
-    font-weight: 600;
-    font-size: 16px;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 #badge {
-    position: absolute;
-    z-index: 1;
+  position: absolute;
+  z-index: 1;
 }
