@@ -1,15 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-* {
-    box-sizing: border-box;
-}
 
-body {
-    margin: 0;
-    padding: 0;
-}
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
 
 .ylw-cl {
-    background-color: #FEBD69;
+  background-color: #febd69;
 }
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+
+html::-webkit-scrollbar {
+  width: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

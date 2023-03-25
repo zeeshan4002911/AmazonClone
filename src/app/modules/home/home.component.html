@@ -1,49 +1,26 @@
 <div style="background-color: #e3e6e6">
-  <app-navbar></app-navbar>
-  <app-navbar-mini></app-navbar-mini>
-
   <div class="container-fluid">
     <div class="row">
-      <ngb-carousel [interval]="2000" id="carousel" *ngIf="images">
-        <ng-template ngbSlide>
-          <img [src]="images[0]" alt="carousel-0" />
-        </ng-template>
-        <ng-template ngbSlide>
-          <img [src]="images[1]" alt="carousel-1" />
-        </ng-template>
-        <ng-template ngbSlide>
-          <img [src]="images[2]" alt="carousel-2" />
-        </ng-template>
-        <ng-template ngbSlide>
-          <img [src]="images[3]" alt="carousel-3" />
-        </ng-template>
-        <ng-template ngbSlide>
-          <img [src]="images[4]" alt="carousel-4" />
-        </ng-template>
-        <ng-template ngbSlide>
-          <img [src]="images[5]" alt="carousel-5" />
-        </ng-template>
-        <ng-template ngbSlide>
-          <img [src]="images[6]" alt="carousel-6" />
-        </ng-template>
-        <ng-template ngbSlide>
-          <img [src]="images[7]" alt="carousel-7" />
-        </ng-template>
-        <ng-template ngbSlide>
-          <img [src]="images[8]" alt="carousel-8" />
-        </ng-template>
+      <ngb-carousel [interval]="2000" id="carousel" *ngIf="carousels">
+        <ng-container *ngFor="let carousel of carousels">
+          <ng-template ngbSlide>
+            <img [src]="carousel.src" [alt]="carousel.alt" />
+          </ng-template>
+        </ng-container>
       </ngb-carousel>
     </div>
   </div>
 
-  <!-- Testing component -->
-  <div class="m-4 p-3 bg-white">
-    <div class="row flex-nowrap p-3">
-      <div class="d-flex flex-nowrap" style="overflow-x: scroll;">
-        <ng-container *ngFor="let productData of products">
-          <app-home-card [data]="productData"></app-home-card>
-        </ng-container>
+  <!-- Product Menu -->
+  <ng-container *ngFor="let i of [1, 1, 1]">
+    <div class="m-4 p-3 bg-white">
+      <div class="row flex-nowrap p-3">
+        <div class="d-flex flex-nowrap scrollable">
+          <ng-container *ngFor="let product of products">
+            <app-home-card [data]="product"></app-home-card>
+          </ng-container>
+        </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 </div>

@@ -1,10 +1,14 @@
-nav {
+#navbar {
   background-color: #131921;
+  position: sticky;
+  z-index: 10;
+  top: 0;
 }
 
 .hover-effect {
   border: 1px solid #131921;
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .hover-effect:hover {
@@ -28,4 +32,14 @@ nav {
 
 #search-extend {
   width: 115%;
+  position: relative;
+  z-index: 11;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
 }

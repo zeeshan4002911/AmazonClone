@@ -1,14 +1,16 @@
-<div class="container-fluid">
+<div id="navbar" class="container-fluid">
   <nav class="row py-1 align-items-center text-light">
     <div class="col-3 row d-flex">
-      <div class="p-2 ml-3 hover-effect">
-        <img
-          src="assets/Amazon-Logo-transparent.png"
-          alt="Amazon-logo"
-          width="90px"
-        />
-        <span>.in</span>
-      </div>
+      <a routerLink="/home">
+        <div class="p-2 ml-3 hover-effect">
+          <img
+            src="assets/Amazon-Logo-transparent.png"
+            alt="Amazon-logo"
+            width="90px"
+          />
+          <span>.in</span>
+        </div>
+      </a>
       <div
         class="col thin-txt d-flex flex-column justify-content-end py-2 px-1 hover-effect"
       >
@@ -39,6 +41,7 @@
           placeholder="Search Amazon.in"
           aria-label="search"
           aria-describedby="search for products"
+          #input
         />
         <div class="input-group-prepend">
           <button
@@ -46,6 +49,8 @@
             type="button"
             class="input-group-text"
             style="background-color: #febd69"
+            (click)="setSearch(input.value)"
+            routerLink="/productList"
           >
             <i class="fa fa-search"></i>
           </button>
@@ -62,11 +67,13 @@
           </div>
         </div>
         <div class="thin-txt pr-0 hover-effect p-2">
-          <p class="mb-0">Hello, sign in</p>
-          <div>
-            <b class="bold-txt">Account & Lists</b>
-            <i class="fa fa-caret-down align-self-end ml-1 text-muted"></i>
-          </div>
+          <a routerLink="/signin">
+            <p class="mb-0">Hello, sign in</p>
+            <div>
+              <b class="bold-txt">Account & Lists</b>
+              <i class="fa fa-caret-down align-self-end ml-1 text-muted"></i>
+            </div>
+          </a>
         </div>
         <div class="thin-txt hover-effect p-2">
           <p class="mb-0">Returns</p>

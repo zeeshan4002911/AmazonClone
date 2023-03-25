@@ -1,6 +1,16 @@
 #carousel {
-    width: 100vw;
-    & img {
-        width: 100%;
-    }
+  width: 100vw;
+  & img {
+    width: 100%;
+  }
+}
+.scrollable {
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollable::-webkit-scrollbar {
+  display: none;
 }

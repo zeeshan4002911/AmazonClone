@@ -1,6 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import products from '../../defaultData/data';
+import products from '../../defaultData/productData';
+import carouselData from '../../defaultData/carouselData';
+
+interface ICarousel {
+  id: number;
+  src: string;
+  alt: string;
+}
+interface IProduct {
+  id: number;
+  name: string;
+  img: string;
+  description: string;
+  discount: number;
+  star: number;
+  ratings: number;
+  answers: number;
+  price: number;
+  actual_price: number;
+}
 
 @Component({
   selector: 'app-home',
@@ -13,16 +32,6 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {}
 
-  products: any = products;
-  images = [
-    'assets/carousel/carousel-0.jpg',
-    'assets/carousel/carousel-1.jpg',
-    'assets/carousel/carousel-2.jpg',
-    'assets/carousel/carousel-3.jpg',
-    'assets/carousel/carousel-4.jpg',
-    'assets/carousel/carousel-5.jpg',
-    'assets/carousel/carousel-6.jpg',
-    'assets/carousel/carousel-7.jpg',
-    'assets/carousel/carousel-8.jpg',
-  ];
+  products: IProduct[] = products;
+  carousels: ICarousel[] = carouselData;
 }
