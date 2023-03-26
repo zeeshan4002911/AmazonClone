@@ -1,13 +1,15 @@
-<div *ngIf="data" class="card m-1 d-inline-block">
+<div *ngIf="data" class="card m-1 pb-5 d-inline-block">
   <div
     class="card-img-top p-2 d-flex align-items-center justify-content-center cursor-pointer"
+    (click)="routeToProduct()"
   >
-    <img [src]="data.img" alt="data.name" class="img-fluid" />
+    <img [src]="data.img" [alt]="data.name" class="img-fluid" />
   </div>
   <div class="card-body p-2">
     <div class="h6 name mb-2">{{ data.name }}</div>
     <div
       class="description cursor-pointer hyperlink-cl text-dark"
+      (click)="routeToProduct()"
     >
       {{ data.description }}
     </div>
@@ -17,14 +19,14 @@
         >( {{ data.ratings }} )</span
       >
     </div>
-    <div class="cursor-pointer">
+    <div class="cursor-pointer" (click)="routeToProduct()">
       <span class="price position-relative h4">{{ data.price }}</span>
       <span class="discount-price mx-1">{{
         data.actual_price | currency : "INR" : "symbol" : "3.0"
       }}</span>
       <span class="discount-percent">({{ data.discount }}% off)</span>
     </div>
-    <div>
+    <div class="pb-5">
       <img src="assets/prime-logo.png" alt="prime logo" />
       <span>Get it by </span>
       <span class="font-weight-bold" style="font-size: small"

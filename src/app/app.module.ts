@@ -11,7 +11,7 @@ import { HomeCardComponent } from './components/home-card/home-card.component';
 import { ProductViewComponent } from './modules/product-view/product-view.component';
 import { ProductListComponent } from './modules/product-list/product-list.component';
 import { SignInComponent } from './modules/sign-in/sign-in.component';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './modules/layout/layout.component';
 import { FormsModule } from '@angular/forms';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 

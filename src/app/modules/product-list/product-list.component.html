@@ -3,16 +3,43 @@
     {{ products.length }} results for
     <b class="ylw-cl">"{{ searchValue }}"</b>
   </div>
-  <hr class="m-0"/>
+  <hr class="m-0" />
 
   <!-- Searched Products -->
-  <div class="m-4 p-3 bg-white">
-    <h4 class="pl-1">RESULTS</h4>
-    <div class="row p-3">
-      <div class="d-flex flex-wrap">
-        <ng-container *ngFor="let product of products">
-          <app-product-card [data]="product"></app-product-card>
-        </ng-container>
+  <div class="row m-4">
+    <div class="col-2 px-0">
+      <h5>Category</h5>
+      <div>
+      <div class="hyperlink-cl cursor-pointer">Appliances</div>
+      <div class="hyperlink-cl cursor-pointer">Books</div>
+      <div class="hyperlink-cl cursor-pointer">Beauty</div>
+      <div class="hyperlink-cl cursor-pointer">Car & Motorbikes</div>
+      <div class="hyperlink-cl cursor-pointer">Clothing & Accessories</div>
+      <div class="hyperlink-cl cursor-pointer">Computers & Accessories</div>
+      <div class="hyperlink-cl cursor-pointer">Electronics</div>
+      <div class="hyperlink-cl cursor-pointer">Health & Personal Care</div>
+      <div class="hyperlink-cl cursor-pointer">Men's Fashion</div>
+      <div class="hyperlink-cl cursor-pointer">Mobiles</div>
+      <div class="hyperlink-cl cursor-pointer">TV</div>
+      <div class="hyperlink-cl cursor-pointer">Women's Fashion</div>
+      <div class="hyperlink-cl cursor-pointer"></div>
+      </div>
+      <h5>Customer Review</h5>
+      <div class="text-muted">
+        <div>⭐⭐⭐⭐ & Up</div>
+        <div>⭐⭐⭐ & Up</div>
+        <div>⭐⭐ & Up</div>
+        <div>⭐ & Up</div>
+      </div>
+    </div>
+    <div class="col-9">
+      <h4 class="pl-1">RESULTS</h4>
+      <div *ngIf="products.length != 0" class="row p-3">
+        <div class="d-flex flex-wrap">
+          <ng-container *ngFor="let product of products">
+            <app-product-card [data]="product"></app-product-card>
+          </ng-container>
+        </div>
       </div>
     </div>
   </div>

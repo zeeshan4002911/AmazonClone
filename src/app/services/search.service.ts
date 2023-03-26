@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import products from '../defaultData/productData';
+import carouselData from '../defaultData/carouselData';
 
 @Injectable({
   providedIn: 'root',
@@ -28,3 +29,5 @@ export class SearchService {
     this.searchSubject.next(input);
   }
 }
+
+export { products, carouselData };

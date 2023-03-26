@@ -1,0 +1,38 @@
+.btn-cart {
+  background-color: #ffd814;
+}
+
+.btn-buy {
+  background-color: #ffa41c;
+}
+
+.btn-buy,
+.btn-cart {
+  border-radius: 25px;
+  &:active {
+    transform: scale(1.05);
+  }
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.price::before {
+  content: "₹";
+  font-size: 12px;
+  vertical-align: super;
+}
+
+.discount-price {
+  font-size: 14px;
+  color: rgb(102, 102, 102);
+  & > span {
+    text-decoration: line-through;
+  }
+}
+
+.discount-percent {
+  font-size: 28px;
+  font-weight: 300;
+  color: #ce0c53;
+}
