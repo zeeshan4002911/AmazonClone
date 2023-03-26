@@ -42,6 +42,7 @@
           aria-label="search"
           aria-describedby="search for products"
           #input
+          (keyup.enter)="onEnterClick(input.value)"
         />
         <div class="input-group-prepend">
           <button
