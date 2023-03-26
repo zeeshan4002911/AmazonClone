@@ -1,0 +1,37 @@
+.card {
+  width: 15rem;
+  height: 30rem;
+}
+
+.card-img-top {
+  background-color: #f7f7f7;
+  height: 15rem;
+}
+
+.description {
+  height: 3rem;
+  font-size: 16px !important;
+  font-weight: 400;
+  overflow: hidden;  
+}
+
+.name {
+  height: 1rem;
+  overflow: hidden;
+}
+
+.price::before {
+  content: '₹';
+  font-size: 12px;
+  vertical-align: super;
+}
+
+.discount-price {
+  text-decoration: line-through;
+  color: rgb(102, 102, 102);
+}
+
+.discount-percent {
+  font-size: 14px;
+  font-weight: 600;
+}

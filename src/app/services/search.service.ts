@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {  BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import products from '../defaultData/productData';
 
 @Injectable({
   providedIn: 'root',
@@ -7,11 +8,23 @@ import {  BehaviorSubject } from 'rxjs';
 export class SearchService {
   private sharedDataSubject = new BehaviorSubject<any>(null);
   sharedData$ = this.sharedDataSubject.asObservable();
+  private searchSubject = new BehaviorSubject<any>(null);
+  search = this.searchSubject.asObservable();
 
   constructor() {}
-  searchValue: string = '';
 
-  setSharedData(data: any): void {
-    this.sharedDataSubject.next(data);
+  filterProducts(key: string) {
+    const keyRegex = new RegExp(key, 'i');
+    const result = products.filter((product) =>
+      product.description.match(keyRegex)
+    );
+    return result;
+  }
+
+  setSharedData(input: string): void {
+    const filteredProduct = this.filterProducts(input);
+    console.log('Result', filteredProduct);
+    this.sharedDataSubject.next(filteredProduct);
+    this.searchSubject.next(input);
   }
 }

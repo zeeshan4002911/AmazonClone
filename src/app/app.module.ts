@@ -13,6 +13,7 @@ import { ProductListComponent } from './modules/product-list/product-list.compon
 import { SignInComponent } from './modules/sign-in/sign-in.component';
 import { LayoutComponent } from './layout/layout.component';
 import { FormsModule } from '@angular/forms';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     ProductListComponent,
     SignInComponent,
     LayoutComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
