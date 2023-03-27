@@ -5,4 +5,19 @@
 button {
   background: linear-gradient(#F5D78B, #f0c250);
   border-color: #9C7E31;
+  &:focus {
+    box-shadow: 0 0 10px #CB8031;
+  }
+  &:active {
+    background: linear-gradient(#F5D78B, #f0c250) !important;
+    transform: scale(0.98);
+  }
+}
+
+#email-number, #password {
+  height: 2rem;
+  &:focus {
+    border-color: #CB8031;
+    box-shadow: 0 0 10px #CB8031;
+  }
 }

@@ -1,48 +1,64 @@
 <div id="home">
-  <div class="container-fluid">
-    <div class="row">
-      <ngb-carousel [interval]="2000" id="carousel" *ngIf="carousels">
-        <ng-container *ngFor="let carousel of carousels">
-          <ng-template ngbSlide>
-            <img [src]="carousel.src" [alt]="carousel.alt" />
-          </ng-template>
-        </ng-container>
-      </ngb-carousel>
+  <div *ngIf="!loading">
+    <div
+      *ngIf="auth"
+      [ngStyle]="{ color: 'green' }"
+      class="px-3 d-flex justify-content-between align-items-center"
+    >
+      <div>Welcome, {{ auth.name }}</div>
+      <button class="btn btn-danger my-1 py-0" (click)="logout()">
+        Logout
+      </button>
     </div>
-  </div>
 
-  <!-- Product Menu (Deals of Day) -->
-  <div class="m-4 p-3 bg-white">
-    <h4 class="pl-1">
-      Today's Deals
-      <span class="h6 ml-2 hyperlink-cl cursor-pointer">See all deals</span>
-    </h4>
-    <div class="row flex-nowrap p-3">
-      <div class="d-flex flex-nowrap scrollable">
-        <ng-container *ngFor="let product of products; let i = index">
-          <app-home-card
-            *ngIf="i < 10"
-            [data]="products[products.length - 1 - i]"
-          ></app-home-card>
-        </ng-container>
+    <div class="container-fluid">
+      <div class="row">
+        <ngb-carousel [interval]="2000" id="carousel" *ngIf="carousels">
+          <ng-container *ngFor="let carousel of carousels">
+            <ng-template ngbSlide>
+              <img [src]="carousel.src" [alt]="carousel.alt" />
+            </ng-template>
+          </ng-container>
+        </ngb-carousel>
       </div>
     </div>
-  </div>
 
-  <!-- Product Menu -->
-  <ng-container *ngFor="let i of [1, 1]">
+    <!-- Product Menu (Deals of Day) -->
     <div class="m-4 p-3 bg-white">
       <h4 class="pl-1">
-        Deals for you
+        Today's Deals
         <span class="h6 ml-2 hyperlink-cl cursor-pointer">See all deals</span>
       </h4>
       <div class="row flex-nowrap p-3">
         <div class="d-flex flex-nowrap scrollable">
-          <ng-container *ngFor="let product of products">
-            <app-product-card [data]="product"></app-product-card>
+          <ng-container *ngFor="let product of products; let i = index">
+            <app-home-card
+              *ngIf="i < 10"
+              [data]="products[products.length - 1 - i]"
+            ></app-home-card>
           </ng-container>
         </div>
       </div>
     </div>
-  </ng-container>
+
+    <!-- Product Menu -->
+    <ng-container *ngFor="let i of [1, 1]">
+      <div class="m-4 p-3 bg-white">
+        <h4 class="pl-1">
+          Deals for you
+          <span class="h6 ml-2 hyperlink-cl cursor-pointer">See all deals</span>
+        </h4>
+        <div class="row flex-nowrap p-3">
+          <div class="d-flex flex-nowrap scrollable">
+            <ng-container *ngFor="let product of products">
+              <app-product-card [data]="product"></app-product-card>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div *ngIf="loading" class="d-flex justify-content-center align-items-center">
+    <img src="assets/loading.gif" alt="loading">
+  </div>
 </div>

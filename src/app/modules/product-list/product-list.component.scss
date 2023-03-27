@@ -1,0 +1,10 @@
+#category > div,
+#rating > div {
+  color: black !important;
+  font-size: 14px !important;
+  font-weight: 400;
+  cursor: pointer;
+  &:hover {
+    color: #c45500 !important;
+  }
+}
