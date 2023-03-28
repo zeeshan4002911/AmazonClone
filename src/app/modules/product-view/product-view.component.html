@@ -1,4 +1,4 @@
-<div *ngIf="product" class="p-5">
+<div *ngIf="product" class="px-5">
   <div class="container-fluid">
     <div class="row">
       <div class="col-5 p-5 d-flex flex-column">
@@ -8,7 +8,7 @@
           class="img-fluid w-75 border rounded mx-auto p-5"
         />
         <div class="mx-auto mt-5">
-          <button class="mx-2 px-4 btn btn-cart">Add to Cart</button>
+          <button class="mx-2 px-4 btn btn-cart" (click)="addToCart(product)">Add to Cart</button>
           <button class="mx-2 px-4 btn btn-buy">Buy Now</button>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <div *ngIf="searchValue">
-  <div class="p-2">
+  <div class="p-2" id="result">
     {{ products.length }} results for
     <b class="ylw-cl">"{{ searchValue }}"</b>
   </div>
@@ -35,7 +35,7 @@
     <!-- Searched Products -->
     <div class="col-10">
       <h4 class="pl-3">RESULTS</h4>
-      <div *ngIf="products.length != 0" class="row p-3 m-0">
+      <div *ngIf="products.length != 0" class="row px-3 m-0">
         <div class="d-flex flex-wrap">
           <ng-container *ngFor="let product of products">
             <app-product-card [data]="product"></app-product-card>

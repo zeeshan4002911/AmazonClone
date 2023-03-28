@@ -1,0 +1,22 @@
+#cart {
+  background-color: #e3e6e6;
+  min-height: 85vh;
+}
+
+.item-img {
+  width: 10rem;
+  max-height: 10rem;
+}
+
+#dropdown {
+  color: black;
+  background-color: #f0f2f2;
+  border-color: gray;
+  box-shadow: 0 0 4px gray;
+  padding: 3px 12px !important;
+}
+
+.options > div {
+  border-right: 1px solid rgb(180, 180, 180);
+  padding: 0 1rem;
+}

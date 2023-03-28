@@ -1,0 +1,97 @@
+<div id="cart" class="py-5 px-3">
+  <div class="container-fluid">
+    <div class="row justify-content-center" [style.gap.rem]="1">
+      <div class="col-8 bg-white">
+        <div class="px-4">
+          <div class="row border-bottom">
+            <div class="h3 p-3">Shopping Cart</div>
+          </div>
+
+          <ng-container *ngFor="let item of items">
+            <div class="media m-4">
+              <div class="item-img mr-3 align-self-center">
+                <img class="img-fluid" [src]="item.img" [alt]="item.name" />
+              </div>
+              <div class="media-body ml-4">
+                <div class="float-right font-weight-bold">
+                  {{ item.price | currency : "INR" : "symbol" : "3.0" }}
+                </div>
+                <h5 class="mt-0">{{ item.name }}</h5>
+                <p [style]="{ color: 'green', fontSize: '14px' }" class="m-0">
+                  In stock
+                </p>
+                <div *ngIf="item.price > 499">
+                  <p class="m-0 text-muted" [style]="'font-size: 14px'">
+                    Eligible for FREE Shipping
+                  </p>
+                </div>
+                <div class="mb-1">
+                  <img
+                    src="assets/fulfilled.png"
+                    alt="fulfilled"
+                    width="70px"
+                  />
+                </div>
+                <input type="checkbox" name="gift" id="gift" />&nbsp;<label
+                  for="gift"
+                  [ngStyle]="{ fontSize: '14px' }"
+                  >This will be a gift
+                  <span class="hyperlink-cl cursor-pointer"
+                    >Learn more</span
+                  ></label
+                >
+                <div class="d-flex align-items-center options">
+                  <div ngbDropdown class="border-0">
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary"
+                      id="dropdown"
+                      ngbDropdownToggle
+                    >
+                      Qty: {{ qty }}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdown">
+                      <button (click)="qtyUpdate(1)" ngbDropdownItem>1</button>
+                      <button (click)="qtyUpdate(2)" ngbDropdownItem>2</button>
+                      <button (click)="qtyUpdate(3)" ngbDropdownItem>3</button>
+                      <button (click)="qtyUpdate(4)" ngbDropdownItem>4</button>
+                      <button (click)="qtyUpdate(5)" ngbDropdownItem>5+</button>
+                    </div>
+                  </div>
+                  <div
+                    class="hyperlink-cl cursor-pointer"
+                    (click)="deleteItem(item)"
+                  >
+                    delete
+                  </div>
+                  <div class="hyperlink-cl cursor-pointer">Save for later</div>
+                  <div class="hyperlink-cl cursor-pointer">
+                    See more like this
+                  </div>
+                  <div class="hyperlink-cl cursor-pointer border-0">Share</div>
+                </div>
+              </div>
+            </div>
+            <div class="row border-bottom mx-3 pb-2"></div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-3 bg-white">
+        <div class="p-3 d-flex justify-content-start flex-column">
+          <div class="h5">
+            Subtotal ({{ totalQty }} item) :
+            <b>{{ totalPrice | currency : "INR" : "symbol" : "1.0" }}</b>
+          </div>
+          <div class="mb-2">
+            <input type="checkbox" name="gift" id="gift" />&nbsp;<label
+              for="gift"
+              [ngStyle]="{ fontSize: '14px' }"
+              >This order contains a gift</label
+            >
+          </div>
+          <button class="btn primary-button">Proceed to Buy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
