@@ -16,11 +16,12 @@
         <h1 class="display-4">{{ product.name }}</h1>
         <h2 class="h6 text-muted py-2">{{ product.description }}</h2>
         <div>
-          <span *ngIf="product.star == 5">⭐⭐⭐⭐⭐</span>
-          <span *ngIf="product.star == 4">⭐⭐⭐⭐</span>
-          <span *ngIf="product.star == 3">⭐⭐⭐</span>
-          <span *ngIf="product.star == 2">⭐⭐</span>
-          <span *ngIf="product.star == 1">⭐</span>
+          <ng-container *ngFor="let i of star.getStarArray(product.star).filled_star">
+            <i class="fa fa-star star-cl"></i>
+          </ng-container>
+          <ng-container *ngFor="let j of star.getStarArray(product.star).unFilled_star">
+            <i class="fa fa-star-o star-cl"></i>
+          </ng-container>
           &nbsp;
           <span class="hyperlink-cl h6 cursor-pointer"
             >{{ product.ratings }} ratings</span

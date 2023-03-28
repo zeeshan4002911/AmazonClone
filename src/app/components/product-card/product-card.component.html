@@ -14,7 +14,20 @@
       {{ data.description }}
     </div>
     <div class="pb-2">
-      ⭐{{ data.star }}
+      <span>
+        {{ data.star }}.0
+        <ng-container
+          *ngFor="let i of star.getStarArray(data.star).filled_star"
+        >
+          <i class="fa fa-star star-cl"></i>
+        </ng-container>
+        <ng-container
+          *ngFor="let j of star.getStarArray(data.star).unFilled_star"
+        >
+          <i class="fa fa-star-o star-cl"></i>
+        </ng-container>
+      </span>
+      &nbsp;
       <span class="hyperlink-cl cursor-pointer font-weight-bold"
         >( {{ data.ratings }} )</span
       >

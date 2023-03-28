@@ -30,10 +30,9 @@ interface IProduct {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-
 export class HomeComponent implements OnInit {
   declare auth: any;
-  loading = false;
+  loading: boolean = false;
 
   constructor(config: NgbCarouselConfig, private search: SearchService) {
     config.showNavigationIndicators = false;

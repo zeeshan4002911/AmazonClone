@@ -25,10 +25,17 @@
       </div>
       <h5 class="mt-3">Customer Review</h5>
       <div id="rating">
-        <div>⭐⭐⭐⭐ & Up</div>
-        <div>⭐⭐⭐ & Up</div>
-        <div>⭐⭐ & Up</div>
-        <div>⭐ & Up</div>
+        <ng-container #This_is_for_star *ngFor="let s of [4, 3, 2, 1]">
+          <div>
+            <ng-container *ngFor="let i of star.getStarArray(s).filled_star">
+              <i class="fa fa-star star-cl"></i>
+            </ng-container>
+            <ng-container *ngFor="let j of star.getStarArray(s).unFilled_star">
+              <i class="fa fa-star-o star-cl"></i>
+            </ng-container>
+            & Up
+          </div>
+        </ng-container>
       </div>
     </div>
 

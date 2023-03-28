@@ -1,6 +1,9 @@
 <div id="cart" class="py-5 px-3">
   <div class="container-fluid">
-    <div class="row justify-content-center" [style.gap.rem]="1">
+    <div
+      class="row justify-content-center align-items-start"
+      [style.gap.rem]="1"
+    >
       <div class="col-8 bg-white">
         <div class="px-4">
           <div class="row border-bottom">
@@ -8,7 +11,7 @@
           </div>
 
           <ng-container *ngFor="let item of items">
-            <div class="media m-4">
+            <div class="media m-5">
               <div class="item-img mr-3 align-self-center">
                 <img class="img-fluid" [src]="item.img" [alt]="item.name" />
               </div>
@@ -89,7 +92,7 @@
               >This order contains a gift</label
             >
           </div>
-          <button class="btn primary-button">Proceed to Buy</button>
+          <button class="btn primary-button mb-3">Proceed to Buy</button>
         </div>
       </div>
     </div>

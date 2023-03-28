@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './modules/home/home.component';
 import { LayoutComponent } from './modules/layout/layout.component';
 import { SignInComponent } from './modules/sign-in/sign-in.component';
 import { ProductListComponent } from './modules/product-list/product-list.component';
 import { ProductViewComponent } from './modules/product-view/product-view.component';
+import { CartComponent } from './modules/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: 'productView/:name/:id',
         component: ProductViewComponent,
+      },
+      {
+        path: 'cart',
+        component: CartComponent,
       },
       { path: '**', redirectTo: 'home' },
     ],

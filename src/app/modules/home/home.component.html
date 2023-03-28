@@ -11,7 +11,7 @@
       </button>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid position-relative">
       <div class="row">
         <ngb-carousel [interval]="2000" id="carousel" *ngIf="carousels">
           <ng-container *ngFor="let carousel of carousels">
@@ -42,7 +42,7 @@
     </div>
 
     <!-- Product Menu -->
-    <ng-container *ngFor="let i of [1, 1]">
+    <ng-container *ngFor="let i of [1, 2]">
       <div class="m-4 p-3 bg-white">
         <h4 class="pl-1">
           Deals for you
@@ -50,8 +50,15 @@
         </h4>
         <div class="row flex-nowrap p-3">
           <div class="d-flex flex-nowrap scrollable">
-            <ng-container *ngFor="let product of products">
-              <app-product-card [data]="product"></app-product-card>
+            <ng-container *ngFor="let product of products; let j = index">
+              <ng-container *ngIf="i == 1">
+                <app-product-card [data]="product"></app-product-card>
+              </ng-container>
+              <ng-container *ngIf="i == 2">
+                <app-product-card
+                  [data]="products[products.length - 1 - j]"
+                ></app-product-card>
+              </ng-container>
             </ng-container>
           </div>
         </div>
@@ -59,6 +66,6 @@
     </ng-container>
   </div>
   <div *ngIf="loading" class="d-flex justify-content-center align-items-center">
-    <img src="assets/loading.gif" alt="loading">
+    <img src="assets/loading.gif" alt="loading" />
   </div>
 </div>

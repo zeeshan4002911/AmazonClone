@@ -1,21 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StarRatingService } from 'src/app/services/star-rating.service';
 import { SearchService } from 'src/app/services/search.service';
 import { Subscription } from 'rxjs';
-
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private searchKey: Subscription;
   products: any = [];
   searchValue: string = '';
 
-  constructor(private search: SearchService, private router: Router) {
+  constructor(
+    private search: SearchService,
+    private router: Router,
+    public star: StarRatingService
+  ) {
     this.subscription = this.search.sharedData$.subscribe(
       (data) => (this.products = data)
     );
@@ -24,9 +28,8 @@ export class ProductListComponent implements OnInit {
     );
 
     // for redirecting to home on reload
-    if (!this.searchValue) this.router.navigate(['/home'])
+    if (!this.searchValue) this.router.navigate(['/home']);
   }
-
 
   ngOnInit(): void {}
 

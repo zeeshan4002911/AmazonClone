@@ -24,7 +24,6 @@ export class SearchService {
 
   setSharedData(input: string): void {
     const filteredProduct = this.filterProducts(input);
-    console.log('Result', filteredProduct);
     this.sharedDataSubject.next(filteredProduct);
     this.searchSubject.next(input);
   }

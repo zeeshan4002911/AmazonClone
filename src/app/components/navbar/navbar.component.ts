@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 import { SearchService } from 'src/app/services/search.service';
 
 @Component({
@@ -8,16 +9,27 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private search: SearchService, private router: Router) {}
+  declare totalItems: number;
 
-  ngOnInit(): void {}
+  constructor(
+    private search: SearchService,
+    private router: Router,
+    private cart: CartService
+  ) {}
 
-  setSearch(input: string) {
-    this.search.setSharedData(input);
+  ngOnInit(): void {
+    this.cart.itemsSubject.subscribe(
+      (data: any) => (this.totalItems = data.length)
+    );
   }
 
-  onEnterClick(input: string) {
-    this.setSearch(input);
-    this.router.navigate(['/productList'])
+  setSearch(input: string) {
+    input = input.trim();
+    if (!input) return;
+
+    /* Passing non-empty string data to service 
+     after removing whitespaces from start and end */
+    this.search.setSharedData(input);
+    this.router.navigate(['/productList']);
   }
 }

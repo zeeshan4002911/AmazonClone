@@ -42,7 +42,7 @@
           aria-label="search"
           aria-describedby="search for products"
           #input
-          (keyup.enter)="onEnterClick(input.value)"
+          (keyup.enter)="setSearch(input.value)"
         />
         <div class="input-group-prepend">
           <button
@@ -51,7 +51,6 @@
             class="input-group-text"
             style="background-color: #febd69"
             (click)="setSearch(input.value)"
-            routerLink="/productList"
           >
             <i class="fa fa-search"></i>
           </button>
@@ -82,8 +81,10 @@
             <b class="bold-txt">& Orders</b>
           </div>
         </div>
-        <div class="px-0 hover-effect p-2">
-          <span class="badge badge-danger" id="badge">23</span>
+        <div class="px-0 hover-effect p-2" routerLink="/cart">
+          <span class="badge badge-danger" id="badge">{{
+            totalItems || 0
+          }}</span>
           <span class="position-relative">
             <i class="fa fa-shopping-cart fa-2x"></i>
           </span>

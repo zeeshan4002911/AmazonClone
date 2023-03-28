@@ -22,6 +22,7 @@ export class SignInComponent implements OnInit {
       : false;
 
     const password_flag = this.password.length >= 8 ? true : false;
+
     if (!email_flag && !password_flag) {
       this.error = 'Invalid Email & password';
     } else if (!email_flag) {
@@ -42,11 +43,14 @@ export class SignInComponent implements OnInit {
     for (let user of users) {
       if (user.email == EMAIL && user.password == PASSWORD) {
         console.log('success', user.name);
-        
+
+        //  Storing user information as auth in local storage
         window.localStorage.setItem('auth', JSON.stringify(user));
         return this.router.navigate(['/home']);
       }
     }
+
+    // Showing error when the data does not match with any user stored data
     this.error = 'Login Failed, Incorrect Credentials';
     return setTimeout(() => (this.error = ''), 3000);
   }

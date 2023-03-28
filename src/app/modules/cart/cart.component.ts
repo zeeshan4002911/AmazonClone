@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
 declare let $: any;
@@ -29,6 +23,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // For changing product buy quantity
   qtyUpdate(num: number) {
     this.qty = num;
   }

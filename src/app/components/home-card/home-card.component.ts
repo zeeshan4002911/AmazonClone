@@ -4,17 +4,16 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home-card',
   templateUrl: './home-card.component.html',
-  styleUrls: ['./home-card.component.scss']
+  styleUrls: ['./home-card.component.scss'],
 })
 export class HomeCardComponent implements OnInit {
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   @Input() data: any = {};
-  
+
   routeToProduct() {
-    this.router.navigate(['/productView', this.data.name, this.data.id])
+    this.router.navigate(['/productView', this.data.name, this.data.id]);
   }
 }
