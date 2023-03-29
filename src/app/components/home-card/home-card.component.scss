@@ -1,22 +1,23 @@
 .card {
-    background-color: #f7f7f7;
-    width: 15vw;
+  background-color: #f7f7f7;
+  width: 15vw;
 }
 
 .card-body {
-    font-size: 12px;
-    background-color: white;
+  font-size: 12px;
+  background-color: white;
 }
 
 .card-img-top {
-    height: 15vw
+  height: 15vw;
+  overflow: hidden;
 }
 
 .off {
-    background-color: rgb(204,12,57);
-    border-radius: 2px;
+  background-color: rgb(204, 12, 57);
+  border-radius: 2px;
 }
 
 .deal-of-day {
-    color: rgb(204,12,57);
+  color: rgb(204, 12, 57);
 }

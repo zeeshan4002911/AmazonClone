@@ -33,7 +33,7 @@
         <div class="d-flex flex-nowrap scrollable">
           <ng-container *ngFor="let product of products; let i = index">
             <app-home-card
-              *ngIf="i < 10"
+              *ngIf="i > 10 && i < 20"
               [data]="products[products.length - 1 - i]"
             ></app-home-card>
           </ng-container>

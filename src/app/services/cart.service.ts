@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 })
 export class CartService {
   constructor() {}
-  
+
   items: object[] = [];
   itemsSubject = new Subject();
 
@@ -19,6 +19,7 @@ export class CartService {
     const index = this.items.indexOf(item);
     if (index < 0) return;
     this.items.splice(index, 1);
-    return this.items
+    this.itemsSubject.next(this.items);
+    return this.items;
   }
 }

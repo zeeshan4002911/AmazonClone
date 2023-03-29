@@ -11,15 +11,24 @@
           </div>
 
           <ng-container *ngFor="let item of items">
+            <!-- Cart-Card -->
             <div class="media m-5">
-              <div class="item-img mr-3 align-self-center">
+              <div
+                class="item-img mr-3 align-self-center cursor-pointer"
+                [routerLink]="['/productView', item.name, item.id]"
+              >
                 <img class="img-fluid" [src]="item.img" [alt]="item.name" />
               </div>
               <div class="media-body ml-4">
                 <div class="float-right font-weight-bold">
                   {{ item.price | currency : "INR" : "symbol" : "3.0" }}
                 </div>
-                <h5 class="mt-0">{{ item.name }}</h5>
+                <h5
+                  class="mt-0 cursor-pointer"
+                  [routerLink]="['/productView', item.name, item.id]"
+                >
+                  {{ item.name }}
+                </h5>
                 <p [style]="{ color: 'green', fontSize: '14px' }" class="m-0">
                   In stock
                 </p>
