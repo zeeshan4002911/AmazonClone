@@ -49,6 +49,6 @@ export class HomeComponent implements OnInit {
   logout() {
     window.localStorage.removeItem('auth');
     this.loading = true;
-    setTimeout(() => location.reload(), 2500);
+    setTimeout(() => location.reload(), 1000);
   }
 }

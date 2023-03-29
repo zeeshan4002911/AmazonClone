@@ -1,25 +1,25 @@
 <div *ngIf="product" class="px-5">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-5 p-5 d-flex flex-column">
+      <div class="col-4 p-5 d-flex flex-column">
         <img
           [src]="product.img"
           [alt]="product.name"
           class="img-fluid w-75 border rounded mx-auto p-5"
         />
-        <div class="mx-auto mt-5">
-          <button class="mx-2 px-4 btn btn-cart" (click)="addToCart(product)">Add to Cart</button>
-          <button class="mx-2 px-4 btn btn-buy">Buy Now</button>
-        </div>
       </div>
-      <div class="col-7 p-5">
+      <div class="col-5 p-5">
         <h1 class="display-4">{{ product.name }}</h1>
         <h2 class="h6 text-muted py-2">{{ product.description }}</h2>
         <div>
-          <ng-container *ngFor="let i of star.getStarArray(product.star).filled_star">
+          <ng-container
+            *ngFor="let i of star.getStarArray(product.star).filled_star"
+          >
             <i class="fa fa-star star-cl"></i>
           </ng-container>
-          <ng-container *ngFor="let j of star.getStarArray(product.star).unFilled_star">
+          <ng-container
+            *ngFor="let j of star.getStarArray(product.star).unFilled_star"
+          >
             <i class="fa fa-star-o star-cl"></i>
           </ng-container>
           &nbsp;
@@ -45,10 +45,54 @@
           >
         </div>
         <div class="py-2">Inclusive of all taxes</div>
-        <hr class="my-1"/>
-        <img src="assets/offer.png" class="img-fluid my-2" alt="offers">
-        <hr class="my-2"/>
-        <!-- TODO bullets feature points -->
+        <hr class="my-1" />
+        <img src="assets/offer.png" class="img-fluid my-2" alt="offers" />
+        <hr class="my-2" />
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, amet.
+            Neque dicta eum dignissimos praesentium iusto explicabo, dolor
+            dolorum ut voluptates unde nesciunt architecto amet? Officiis
+            praesentium repudiandae est magni!
+          </p>
+        </div>
+      </div>
+      <div class="col-3 my-5 py-3 px-4 border rounded">
+        <div>
+          <span class="price position-relative h2">{{ product.price }}</span>
+          <br />
+          <span class="discount-price mx-1"
+            >M.R.P.:
+            <span>{{
+              product.actual_price | currency : "INR" : "symbol" : "3.0"
+            }}</span></span
+          >
+        </div>
+        <div class="mt-2 d-flex flex-column align-items-stretch">
+          <button class="px-4 btn btn-cart" (click)="addToCart(product)">
+            Add to Cart
+          </button>
+          <button class="mt-2 px-4 btn btn-buy">Buy Now</button>
+        </div>
+        <div class="my-2">
+          <div>
+            <i class="fa fa-lock text-muted"></i>
+            <span class="pl-2 hyperlink-cl cursor-pointer"
+              >Secure transaction</span
+            >
+          </div>
+          <input type="checkbox" name="gift" id="gift" />&nbsp;<label
+            for="gift"
+            [ngStyle]="{ fontSize: '14px' }"
+            >Add gift options</label
+          >
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum
+          praesentium mollitia error harum, nulla culpa similique magni aut
+          corporis ratione sint eveniet in, assumenda architecto adipisci,
+          repellat placeat facilis? Ipsa.
+        </p>
       </div>
     </div>
   </div>

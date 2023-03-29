@@ -65,7 +65,9 @@
       </div>
     </ng-container>
   </div>
-  <div *ngIf="loading" class="d-flex justify-content-center align-items-center">
-    <img src="assets/loading.gif" alt="loading" />
+  <div *ngIf="loading">
+    <div class="d-flex justify-content-center align-items-center" [style.height.vh]="50">
+      <img src="assets/loading.gif" alt="loading" width="30px" />
+    </div>
   </div>
 </div>
