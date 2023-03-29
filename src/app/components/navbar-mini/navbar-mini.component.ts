@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-navbar-mini',
   templateUrl: './navbar-mini.component.html',
-  styleUrls: ['./navbar-mini.component.scss']
+  styleUrls: ['./navbar-mini.component.scss'],
 })
-export class NavbarMiniComponent implements OnInit {
+export class NavbarMiniComponent implements OnInit, AfterViewInit {
+  @ViewChild('navbarMini') navbarMini!: ElementRef;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    console.log(this.navbarMini);
   }
-
 }

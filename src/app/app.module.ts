@@ -15,6 +15,7 @@ import { LayoutComponent } from './modules/layout/layout.component';
 import { FormsModule } from '@angular/forms';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { CartComponent } from './modules/cart/cart.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CartComponent } from './modules/cart/cart.component';
     LayoutComponent,
     ProductCardComponent,
     CartComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
