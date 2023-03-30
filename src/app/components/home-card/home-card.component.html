@@ -11,8 +11,7 @@
   </div>
   <div class="card-body px-0 py-3">
     <div>
-      <span class="off text-light p-1">Up to {{ data.discount }} off</span>
-      <span class="deal-of-day ml-2 font-weight-bold">Deal of the Day</span>
+      <ng-content></ng-content>
     </div>
     <div class="name mt-2 cursor-pointer" (click)="routeToProduct()">
       {{ data.name }}

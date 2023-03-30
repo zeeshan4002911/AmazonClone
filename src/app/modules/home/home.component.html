@@ -35,7 +35,10 @@
             <app-home-card
               *ngIf="i > 10 && i < 20"
               [data]="products[products.length - 1 - i]"
-            ></app-home-card>
+            >
+            <span class="off text-light p-1">Up to {{ product.discount }} off</span>
+            <span class="deal-of-day ml-2 font-weight-bold">Deal of the Day</span>
+          </app-home-card>
           </ng-container>
         </div>
       </div>
