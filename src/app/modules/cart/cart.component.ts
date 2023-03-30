@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, DoCheck } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
 declare let $: any;
@@ -8,30 +8,32 @@ declare let $: any;
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent implements OnInit, AfterViewInit {
+export class CartComponent implements OnInit, AfterViewInit, DoCheck {
   constructor(private cart: CartService) {}
-  items: any = [];
-  qty: number = 1;
   totalQty: number = 0;
   totalPrice: number = 0;
+  declare items: any;
 
   ngOnInit(): void {
     this.items = this.cart.items;
-    this.totalQty = this.items.length;
-    for (let item of this.items) {
-      this.totalPrice += item.price;
-    }
+  }
+
+  ngDoCheck(): void {
+    this.totalQty = 0;
+    this.totalPrice = 0;
+    this.items.forEach((item: any) => {
+      this.totalQty += item.qty;
+      this.totalPrice += item.qty * item.price;
+    });
   }
 
   // For changing product buy quantity
-  qtyUpdate(num: number) {
-    this.qty = num;
+  qtyUpdate(num: number, id: number) {
+    this.items = this.cart.qtyUpdateCart(num, id);
   }
 
   deleteItem(item: any) {
     this.items = this.cart.removeFromCart(item);
-    this.totalQty--;
-    this.totalPrice -= item.price;
   }
 
   // JQuery Not working

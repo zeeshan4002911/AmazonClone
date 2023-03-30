@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-
-import {
-  SearchService,
-  products,
-  carouselData,
-} from 'src/app/services/search.service';
+import { products, carouselData } from 'src/app/services/search.service';
 
 interface ICarousel {
   id: number;
@@ -34,7 +29,7 @@ export class HomeComponent implements OnInit {
   declare auth: any;
   loading: boolean = false;
 
-  constructor(config: NgbCarouselConfig, private search: SearchService) {
+  constructor(config: NgbCarouselConfig) {
     config.showNavigationIndicators = false;
   }
 

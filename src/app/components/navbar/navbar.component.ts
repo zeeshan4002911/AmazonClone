@@ -18,9 +18,12 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cart.itemsSubject.subscribe(
-      (data: any) => (this.totalItems = data.length)
-    );
+    this.cart.itemsSubject.subscribe((items: any) => {
+      this.totalItems = 0;
+      items.forEach((item: any) => {
+        this.totalItems += item.qty;
+      });
+    });
   }
 
   setSearch(input: string) {

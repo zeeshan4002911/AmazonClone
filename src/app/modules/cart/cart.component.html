@@ -60,14 +60,14 @@
                       id="dropdown"
                       ngbDropdownToggle
                     >
-                      Qty: {{ qty }}
+                      Qty: {{ item.qty }}
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdown">
-                      <button (click)="qtyUpdate(1)" ngbDropdownItem>1</button>
-                      <button (click)="qtyUpdate(2)" ngbDropdownItem>2</button>
-                      <button (click)="qtyUpdate(3)" ngbDropdownItem>3</button>
-                      <button (click)="qtyUpdate(4)" ngbDropdownItem>4</button>
-                      <button (click)="qtyUpdate(5)" ngbDropdownItem>5+</button>
+                      <button (click)="qtyUpdate(1, item.id)" ngbDropdownItem>1</button>
+                      <button (click)="qtyUpdate(2, item.id)" ngbDropdownItem>2</button>
+                      <button (click)="qtyUpdate(3, item.id)" ngbDropdownItem>3</button>
+                      <button (click)="qtyUpdate(4, item.id)" ngbDropdownItem>4</button>
+                      <button (click)="qtyUpdate(5, item.id)" ngbDropdownItem>5</button>
                     </div>
                   </div>
                   <div
