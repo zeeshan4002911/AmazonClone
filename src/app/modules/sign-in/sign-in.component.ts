@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { users } from 'src/app/defaultData/userData';
 
@@ -7,43 +15,39 @@ import { users } from 'src/app/defaultData/userData';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent implements OnInit {
-  constructor(private router: Router) {}
+export class SignInComponent implements OnInit, AfterViewInit {
+  declare signInForm: FormGroup;
+  login_failed: boolean = false;
+  ref: any = '';
+  show: boolean = false;
+  @ViewChild('password_ref') password_ref!: ElementRef;
 
-  ngOnInit(): void {}
+  constructor(private router: Router, private renderer: Renderer2) {}
 
-  email = '';
-  password = '';
-  error = '';
+  ngOnInit(): void {
+    const passwordRegex =
+      '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$';
+    this.signInForm = new FormGroup({
+      email_number: new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.pattern(passwordRegex),
+      ]),
+    });
+  }
 
-  loginValidator() {
-    const email_flag = this.email.match('[a-z0-9]+@[a-z]+.[a-z]{2,3}')
-      ? true
-      : false;
+  onSubmit() {
+    if (this.signInForm.status === 'INVALID') return;
 
-    const password_flag = this.password.length >= 8 ? true : false;
-
-    if (!email_flag && !password_flag) {
-      this.error = 'Invalid Email & password';
-    } else if (!email_flag) {
-      this.error = 'Invalid Email';
-    } else if (!password_flag) {
-      this.error = `Invalid_password`;
-    }
-    setTimeout(() => (this.error = ''), 3000);
-
-    const EMAIL = this.email.toLowerCase();
-    const PASSWORD = this.password;
-    this.email = '';
-    this.password = '';
-
-    // Stop Execution for failed input format validation
-    if (!email_flag || !password_flag) return;
+    // Storing format validated email and password in variables
+    const EMAIL = this.signInForm.value.email_number.toLowerCase();
+    const PASSWORD = this.signInForm.value.password;
 
     for (let user of users) {
       if (user.email == EMAIL && user.password == PASSWORD) {
-        console.log('success', user.name);
-
         //  Storing user information as auth in local storage
         window.localStorage.setItem('auth', JSON.stringify(user));
         return this.router.navigate(['/home']);
@@ -51,7 +55,29 @@ export class SignInComponent implements OnInit {
     }
 
     // Showing error when the data does not match with any user stored data
-    this.error = 'Login Failed, Incorrect Credentials';
-    return setTimeout(() => (this.error = ''), 3000);
+    this.login_failed = true;
+    return setTimeout(() => (this.login_failed = false), 3000);
+  }
+
+  get email_number() {
+    return this.signInForm.get('email_number');
+  }
+
+  get password() {
+    return this.signInForm.get('password');
+  }
+
+  ngAfterViewInit(): void {
+    this.ref = this.renderer.selectRootElement(this.password_ref.nativeElement);
+  }
+  
+  onClick() {
+    if (this.ref.type === 'password') {
+      this.ref.type = 'text';
+      this.show = true;
+    } else {
+      this.ref.type = 'password';
+      this.show = false;
+    }
   }
 }

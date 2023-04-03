@@ -3,21 +3,36 @@
 }
 
 button {
-  background: linear-gradient(#F5D78B, #f0c250);
-  border-color: #9C7E31;
+  background: linear-gradient(#f5d78b, #f0c250);
+  border-color: #9c7e31;
   &:focus {
-    box-shadow: 0 0 10px #CB8031;
+    box-shadow: 0 0 10px #cb8031;
   }
   &:active {
-    background: linear-gradient(#F5D78B, #f0c250) !important;
+    background: linear-gradient(#f5d78b, #f0c250) !important;
     transform: scale(0.98);
   }
 }
 
-#email-number, #password {
+#email_number,
+#password {
   height: 2rem;
   &:focus {
-    border-color: #CB8031;
-    box-shadow: 0 0 10px #CB8031;
+    border-color: #cb8031;
+    box-shadow: 0 0 10px #cb8031;
+  }
+}
+
+.red-cl {
+  color: red;
+}
+
+#eye {
+  color: gray;
+  background: none;
+  &:focus, &:active {
+    box-shadow: none;
+    // outline: none;
+    background: none !important;
   }
 }

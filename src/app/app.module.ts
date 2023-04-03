@@ -12,7 +12,7 @@ import { ProductViewComponent } from './modules/product-view/product-view.compon
 import { ProductListComponent } from './modules/product-list/product-list.component';
 import { SignInComponent } from './modules/sign-in/sign-in.component';
 import { LayoutComponent } from './modules/layout/layout.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -41,6 +41,7 @@ import { StarRatingService } from './services/star-rating.service';
     NgbModule,
     NgbCarouselModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [SearchService, CartService, StarRatingService],
   bootstrap: [AppComponent],

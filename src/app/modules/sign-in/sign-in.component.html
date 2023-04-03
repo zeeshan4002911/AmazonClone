@@ -3,34 +3,49 @@
     <img src="assets/Amazon-black.jpg" alt="logo" width="100px" />
     <span class="pl-1">.in</span>
   </div>
-  <div class="card p-4">
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="card p-4">
     <div class="mb-3">
       <h1 class="h5">Sign in</h1>
     </div>
     <label for="email-number">Email or mobile phone number</label>
     <input
       class="form-control mb-2"
+      formControlName="email_number"
       autofocus
       type="text"
-      id="email-number"
-      [(ngModel)]="email"
+      id="email_number"
     />
-    <label for="password">Password</label>
-    <input
-      class="form-control"
-      type="password"
-      id="password"
-      [(ngModel)]="password"
-    />
-    <button class="btn my-4" (click)="loginValidator()">Continue</button>
-
-    <div class="mb-3" *ngIf="error" [ngStyle]="{ color: 'red' }">
-      {{ error }}
-      <ng-container *ngIf="error == 'Invalid_password'">
-        <div>Password should be atLeast eight characters</div>
-      </ng-container>
+    <div
+      *ngIf="email_number?.invalid && email_number?.touched"
+      class="my-2 red-cl"
+    >
+      <div *ngIf="email_number?.errors?.required">Email is required</div>
+      <div *ngIf="email_number?.errors?.email">Invalid email format</div>
     </div>
-
+    <label for="password">Password</label>
+    <div class="input-group">
+      <input
+        class="form-control"
+        formControlName="password"
+        type="password"
+        id="password"
+        #password_ref
+      />
+      <button class="border-0 mx-1 rounded" id="eye" (click)="onClick()">
+        <i class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+        <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+      </button>
+    </div>
+    <div *ngIf="password?.invalid && password?.touched" class="my-2 red-cl">
+      <div *ngIf="password?.errors?.required">Password is required</div>
+      <div *ngIf="password?.errors?.pattern">Password is wrong</div>
+    </div>
+    <div>
+      <button class="btn my-4 w-100">Continue</button>
+    </div>
+    <div *ngIf="login_failed">
+      <ng-container *ngTemplateOutlet="error"></ng-container>
+    </div>
     <p class="policy">
       By continuing, you agree to Amazon's
       <a href="#"
@@ -41,5 +56,9 @@
     </p>
 
     <a href="#">Need help?</a>
-  </div>
+  </form>
 </div>
+
+<ng-template #error>
+  <div class="my-2 red-cl">Login Failed, Incorrect Credentials</div>
+</ng-template>
