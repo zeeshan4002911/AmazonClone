@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { IProduct } from 'src/app/model/interface';
 
 @Component({
   selector: 'app-home-card',
@@ -11,7 +12,7 @@ export class HomeCardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @Input() data: any = {};
+  @Input() data: IProduct = <IProduct>{};
 
   routeToProduct() {
     this.router.navigate(['/productView', this.data.name, this.data.id]);

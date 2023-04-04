@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, DoCheck } from '@angular/core';
+import { IProduct } from 'src/app/model/interface';
 import { CartService } from 'src/app/services/cart.service';
 
 declare let $: any;
@@ -12,7 +13,7 @@ export class CartComponent implements OnInit, AfterViewInit, DoCheck {
   constructor(private cart: CartService) {}
   totalQty: number = 0;
   totalPrice: number = 0;
-  declare items: any;
+  declare items: IProduct[];
 
   ngOnInit(): void {
     this.items = this.cart.items;

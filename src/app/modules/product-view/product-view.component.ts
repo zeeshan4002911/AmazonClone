@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IProduct } from 'src/app/model/interface';
 import { CartService } from 'src/app/services/cart.service';
 import { products } from 'src/app/services/search.service';
 import { StarRatingService } from 'src/app/services/star-rating.service';
@@ -12,7 +13,7 @@ import { StarRatingService } from 'src/app/services/star-rating.service';
 export class ProductViewComponent implements OnInit {
   declare name: string;
   declare id: number;
-  declare product: any;
+  declare product: IProduct;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +32,7 @@ export class ProductViewComponent implements OnInit {
     });
   }
 
-  addToCart(product: any) {
+  addToCart(product: IProduct) {
     this.cart.addToCart(product);
   }
 }

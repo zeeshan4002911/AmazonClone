@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { IProduct } from '../model/interface';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class CartService {
   items: any = [];
   itemsSubject = new Subject();
 
-  addToCart(item: any) {
+  addToCart(item: IProduct) {
     let not_found_flag = true;
     this.items.forEach((obj: any) => {
       if (obj.id === item.id) {
@@ -27,7 +28,7 @@ export class CartService {
     this.itemsSubject.next(this.items);
   }
 
-  removeFromCart(item: object) {
+  removeFromCart(item: IProduct) {
     const index = this.items.indexOf(item);
     if (index < 0) return;
 
@@ -42,7 +43,7 @@ export class CartService {
   }
 
   qtyUpdateCart(num: number, id: number) {
-    this.items.forEach((item: any) => {
+    this.items.forEach((item: IProduct) => {
       if (item.id == id) {
         item.qty = num;
       }

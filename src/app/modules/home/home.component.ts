@@ -1,24 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { products, carouselData } from 'src/app/services/search.service';
-
-interface ICarousel {
-  id: number;
-  src: string;
-  alt: string;
-}
-interface IProduct {
-  id: number;
-  name: string;
-  img: string;
-  description: string;
-  discount: number;
-  star: number;
-  ratings: number;
-  answers: number;
-  price: number;
-  actual_price: number;
-}
+import { ICarousel, IProduct } from 'src/app/model/interface';
 
 @Component({
   selector: 'app-home',

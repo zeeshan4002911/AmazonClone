@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { StarRatingService } from 'src/app/services/star-rating.service';
 import { SearchService } from 'src/app/services/search.service';
 import { Subscription } from 'rxjs';
+import { IProduct } from 'src/app/model/interface';
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class ProductListComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private searchKey: Subscription;
-  products: any = [];
+  products: IProduct[] = [];
   searchValue: string = '';
 
   constructor(

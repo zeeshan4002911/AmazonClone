@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { IProduct } from 'src/app/model/interface';
 import { StarRatingService } from 'src/app/services/star-rating.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ProductCardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @Input() data: any = {};
+  @Input() data: IProduct = <IProduct>{};
 
   routeToProduct() {
     this.router.navigate(['/productView', this.data.name, this.data.id]);
