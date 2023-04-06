@@ -8,7 +8,6 @@ import { NavbarMiniComponent } from './components/navbar-mini/navbar-mini.compon
 import { HomeComponent } from './modules/home/home.component';
 import { NgbModule, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeCardComponent } from './components/home-card/home-card.component';
-import { ProductViewComponent } from './modules/product-view/product-view.component';
 import { ProductListComponent } from './modules/product-list/product-list.component';
 import { SignInComponent } from './modules/sign-in/sign-in.component';
 import { LayoutComponent } from './modules/layout/layout.component';
@@ -19,6 +18,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SearchService } from './services/search.service';
 import { CartService } from './services/cart.service';
 import { StarRatingService } from './services/star-rating.service';
+import { ProductViewModule } from './modules/product-view/product-view.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,6 @@ import { StarRatingService } from './services/star-rating.service';
     NavbarMiniComponent,
     HomeComponent,
     HomeCardComponent,
-    ProductViewComponent,
     ProductListComponent,
     SignInComponent,
     LayoutComponent,
@@ -42,6 +41,7 @@ import { StarRatingService } from './services/star-rating.service';
     NgbCarouselModule,
     FormsModule,
     ReactiveFormsModule,
+    ProductViewModule,
   ],
   providers: [SearchService, CartService, StarRatingService],
   bootstrap: [AppComponent],
