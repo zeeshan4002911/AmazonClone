@@ -18,4 +18,12 @@ export class ProductCardComponent implements OnInit {
   routeToProduct() {
     this.router.navigate(['/productView', this.data.name, this.data.id]);
   }
+
+  getDeliveryDate() {
+    const date = new Date();
+
+    // Adding two extra day for delivery delay
+    date.setDate(date.getDate() + 2);
+    return date;
+  }
 }

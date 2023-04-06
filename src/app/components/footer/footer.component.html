@@ -67,23 +67,9 @@
     </div>
   </div>
   <div class="row footer-1 pb-4 justify-content-center">
-    <li class="pl-5">Australia</li>
-    <li>Brazil</li>
-    <li>Canada</li>
-    <li>China</li>
-    <li>France</li>
-    <li>Germany</li>
-    <li>Italy</li>
-    <li>Japan</li>
-    <li>Mexico</li>
-    <li>Netherlands</li>
-    <li>Poland</li>
-    <li>Singapore</li>
-    <li>Spain</li>
-    <li>Turkey</li>
-    <li>United Arab Emirates</li>
-    <li>United Kingdom</li>
-    <li>United States</li>
+    <ng-container *ngFor="let country of countries">
+      <li>{{ country | titlecase }}</li>
+    </ng-container>
   </div>
   <div class="container-fluid py-4 footer-2">
     <div class="row pb-3">

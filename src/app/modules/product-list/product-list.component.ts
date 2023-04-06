@@ -11,6 +11,21 @@ import { IProduct } from 'src/app/model/interface';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
+  categories = [
+    'Appliances',
+    'Books',
+    'Beauty',
+    'Car & Motorbikes',
+    'Clothing & Accessories',
+    'Computers & Accessories',
+    'Electronics',
+    'Health & Personal Care',
+    `Men's Fashion`,
+    'Mobiles',
+    'TV',
+    `Women's Fashion`,
+  ];
+
   private subscription: Subscription;
   private searchKey: Subscription;
   products: IProduct[] = [];

@@ -42,9 +42,10 @@
     <div class="pb-5">
       <img src="assets/prime-logo.png" alt="prime logo" />
       <span>Get it by </span>
-      <span class="font-weight-bold" style="font-size: small"
-        >Wednesday, 1 April</span
-      >
+      <br />
+      <span class="font-weight-bold" style="font-size: small">{{
+        getDeliveryDate() | date : "fullDate"
+      }}</span>
     </div>
   </div>
 </div>

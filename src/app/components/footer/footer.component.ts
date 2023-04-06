@@ -6,9 +6,28 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-
+  countries = [
+    'Australia',
+    'Brazil',
+    'Canada',
+    'China',
+    'France',
+    'Germany',
+    'Italy',
+    'India',
+    'Japan',
+    'Mexico',
+    'Netherlands',
+    'Poland',
+    'Singapore',
+    'Spain',
+    'Turkey',
+    'United arab emirates',
+    'United Kingdom',
+    'United State',
+  ];
   constructor() {}
-  @Output() backToTop = new EventEmitter()
+  @Output() backToTop = new EventEmitter();
 
   ngOnInit(): void {}
 

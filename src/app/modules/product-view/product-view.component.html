@@ -48,14 +48,7 @@
         <hr class="my-1" />
         <img src="assets/offer.png" class="img-fluid my-2" alt="offers" />
         <hr class="my-2" />
-        <div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, amet.
-            Neque dicta eum dignissimos praesentium iusto explicabo, dolor
-            dolorum ut voluptates unde nesciunt architecto amet? Officiis
-            praesentium repudiandae est magni!
-          </p>
-        </div>
+        <div *ngTemplateOutlet="lorem"></div>
       </div>
       <div class="col-3 my-5 py-3 px-4 border rounded">
         <div>
@@ -87,13 +80,17 @@
             >Add gift options</label
           >
         </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum
-          praesentium mollitia error harum, nulla culpa similique magni aut
-          corporis ratione sint eveniet in, assumenda architecto adipisci,
-          repellat placeat facilis? Ipsa.
-        </p>
+        <div *ngTemplateOutlet="lorem"></div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #lorem>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, amet. Neque
+    dicta eum dignissimos praesentium iusto explicabo, dolor dolorum ut
+    voluptates unde nesciunt architecto amet? Officiis praesentium repudiandae
+    est magni!
+  </p>
+</ng-template>

@@ -8,7 +8,7 @@ import { IProduct } from '../model/interface';
 export class CartService {
   constructor() {}
 
-  items: any = [];
+  items: IProduct[] | any = [];
   itemsSubject = new Subject();
 
   addToCart(item: IProduct) {
@@ -32,11 +32,7 @@ export class CartService {
     const index = this.items.indexOf(item);
     if (index < 0) return;
 
-    this.items[index].qty -= 1;
-
-    if (this.items[index].qty === 0) {
-      this.items.splice(index, 1);
-    }
+    this.items.splice(index, 1);
 
     this.itemsSubject.next(this.items);
     return this.items;
