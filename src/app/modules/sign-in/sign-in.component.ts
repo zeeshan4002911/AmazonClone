@@ -71,6 +71,7 @@ export class SignInComponent implements OnInit, AfterViewInit {
     this.ref = this.renderer.selectRootElement(this.password_ref.nativeElement);
   }
   
+  // for password show nd hide
   onClickIconShow() {
     if (this.ref.type === 'password') {
       this.ref.type = 'text';

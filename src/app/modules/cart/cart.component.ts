@@ -37,7 +37,7 @@ export class CartComponent implements OnInit, AfterViewInit, DoCheck {
     this.items = this.cart.removeFromCart(item);
   }
 
-  // JQuery Not working
+  // JQuery Not working cause of version incompatibility
   ngAfterViewInit() {
     $(document).ready(function () {
       $('.dropdown-toggle').dropdown();

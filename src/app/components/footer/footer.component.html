@@ -11,42 +11,33 @@
       <ul>
         Get to Know Us
       </ul>
-      <li>About US</li>
-      <li>Careers</li>
-      <li>Press Release</li>
-      <li>Amazon Science</li>
+      <ng-container *ngFor="let item of get_to_know_us">
+        <li>{{ item | titlecase }}</li>
+      </ng-container>
     </div>
     <div class="col">
       <ul>
         Connect with Us
       </ul>
-      <li>Facebook</li>
-      <li>Twitter</li>
-      <li>Instagram</li>
+      <ng-container *ngFor="let item of connect_with_us">
+        <li>{{ item | titlecase }}</li>
+      </ng-container>
     </div>
     <div class="col">
       <ul>
         Make Money with Us
       </ul>
-      <li>Sell on Amazon</li>
-      <li>Sell under Amazon Accelerator</li>
-      <li>Protect and Build Your Brand</li>
-      <li>Amazon Global Selling</li>
-      <li>Become an Affiliate</li>
-      <li>Fulfilment by Amazon</li>
-      <li>Advertise Your Products</li>
-      <li>Amazon Pay on Merchants</li>
+      <ng-container *ngFor="let item of make_money_with_us">
+        <li>{{ item }}</li>
+      </ng-container>
     </div>
     <div class="col">
       <ul>
         Let Us Help You
       </ul>
-      <li>COVID-19 and Amazon</li>
-      <li>Your Account</li>
-      <li>Returns Centre</li>
-      <li>100% Purchase Protection</li>
-      <li>Amazon App Download</li>
-      <li>Help</li>
+      <ng-container *ngFor="let item of let_us_help_you">
+        <li>{{ item }}</li>
+      </ng-container>
     </div>
   </div>
   <div class="row bottom-border"></div>

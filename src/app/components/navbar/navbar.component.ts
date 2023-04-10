@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
     if (!input) return;
 
     /* Passing non-empty string data to service 
-     after removing whitespaces from start and end */
+     after removing whitespaces from start and end and then routing to search results page*/
     this.search.setSharedData(input);
     this.router.navigate(['/productList']);
   }
