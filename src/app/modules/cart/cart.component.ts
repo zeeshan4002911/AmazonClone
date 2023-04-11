@@ -1,4 +1,10 @@
-import { Component, OnInit, AfterViewInit, DoCheck } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  DoCheck,
+  OnDestroy,
+} from '@angular/core';
 import { IProduct } from 'src/app/model/interface';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -9,11 +15,13 @@ declare let $: any;
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent implements OnInit, AfterViewInit, DoCheck {
+export class CartComponent
+  implements OnInit, AfterViewInit, DoCheck, OnDestroy
+{
   constructor(private cart: CartService) {}
-  totalQty: number = 0;
-  totalPrice: number = 0;
-  declare items: IProduct[];
+  totalQty: number | undefined = 0;
+  totalPrice: number | undefined = 0;
+  declare items: IProduct[] | undefined;
 
   ngOnInit(): void {
     this.items = this.cart.items;
@@ -22,9 +30,9 @@ export class CartComponent implements OnInit, AfterViewInit, DoCheck {
   ngDoCheck(): void {
     this.totalQty = 0;
     this.totalPrice = 0;
-    this.items.forEach((item: any) => {
+    this.items?.forEach((item: any) => {
       this.totalQty += item.qty;
-      this.totalPrice += item.qty * item.price;
+      this.totalPrice = <number>this.totalPrice + item.qty * item.price;
     });
   }
 
@@ -42,5 +50,11 @@ export class CartComponent implements OnInit, AfterViewInit, DoCheck {
     $(document).ready(function () {
       $('.dropdown-toggle').dropdown();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.totalQty = undefined;
+    this.totalPrice = undefined;
+    this.items = undefined;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/model/interface';
 import { CartService } from 'src/app/services/cart.service';
@@ -10,10 +10,10 @@ import { StarRatingService } from 'src/app/services/star-rating.service';
   templateUrl: './product-view.component.html',
   styleUrls: ['./product-view.component.scss'],
 })
-export class ProductViewComponent implements OnInit {
-  declare name: string;
-  declare id: number;
-  declare product: IProduct;
+export class ProductViewComponent implements OnInit, OnDestroy {
+  declare name: string | undefined;
+  declare id: number | undefined;
+  declare product: IProduct | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,5 +34,9 @@ export class ProductViewComponent implements OnInit {
 
   addToCart(product: IProduct) {
     this.cart.addToCart(product);
+  }
+
+  ngOnDestroy(): void {
+    this.name = this.id = this.product = undefined;
   }
 }

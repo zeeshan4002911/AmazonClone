@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { SearchService } from 'src/app/services/search.service';
@@ -8,8 +8,8 @@ import { SearchService } from 'src/app/services/search.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
-  declare totalItems: number;
+export class NavbarComponent implements OnInit, OnDestroy {
+  declare totalItems: number | undefined;
 
   constructor(
     private search: SearchService,
@@ -34,5 +34,9 @@ export class NavbarComponent implements OnInit {
      after removing whitespaces from start and end and then routing to search results page*/
     this.search.setSharedData(input);
     this.router.navigate(['/productList']);
+  }
+
+  ngOnDestroy(): void {
+    this.totalItems = undefined;
   }
 }

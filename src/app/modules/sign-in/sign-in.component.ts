@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
@@ -15,12 +16,12 @@ import { users } from 'src/app/defaultData/userData';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent implements OnInit, AfterViewInit {
+export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
   declare signInForm: FormGroup;
-  login_failed: boolean = false;
-  ref: any = '';
-  show: boolean = false;
-  @ViewChild('password_ref') password_ref!: ElementRef;
+  login_failed: boolean | undefined = false;
+  ref: any | undefined = '';
+  show: boolean | undefined = false;
+  @ViewChild('password_ref') password_ref!: ElementRef | undefined;
 
   constructor(private router: Router, private renderer: Renderer2) {}
 
@@ -68,9 +69,11 @@ export class SignInComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.ref = this.renderer.selectRootElement(this.password_ref.nativeElement);
+    this.ref = this.renderer.selectRootElement(
+      this.password_ref?.nativeElement
+    );
   }
-  
+
   // for password show nd hide
   onClickIconShow() {
     if (this.ref.type === 'password') {
@@ -80,5 +83,9 @@ export class SignInComponent implements OnInit, AfterViewInit {
       this.ref.type = 'password';
       this.show = false;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.login_failed = this.ref = this.show = this.password_ref = undefined;
   }
 }

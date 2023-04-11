@@ -32,13 +32,16 @@
       <div class="row flex-nowrap p-3">
         <div class="d-flex flex-nowrap scrollable">
           <ng-container *ngFor="let product of products; let i = index">
-            <app-home-card
-              *ngIf="i > 10 && i < 20"
-              [data]="products[products.length - 1 - i]"
-            >
-            <span class="off text-light p-1">Up to {{ product.discount }} off</span>
-            <span class="deal-of-day ml-2 font-weight-bold">Deal of the Day</span>
-          </app-home-card>
+            <ng-container *ngIf="i > 10 && i < 20">
+              <app-home-card [data]="products[products.length - 1 - i]">
+                <span class="off text-light p-1"
+                  >Up to {{ product.discount }} off</span
+                >
+                <span class="deal-of-day ml-2 font-weight-bold"
+                  >Deal of the Day</span
+                >
+              </app-home-card>
+            </ng-container>
           </ng-container>
         </div>
       </div>
@@ -69,7 +72,10 @@
     </ng-container>
   </div>
   <div *ngIf="loading">
-    <div class="d-flex justify-content-center align-items-center" [style.height.vh]="50">
+    <div
+      class="d-flex justify-content-center align-items-center"
+      [style.height.vh]="50"
+    >
       <img src="assets/loading.gif" alt="loading" width="30px" />
     </div>
   </div>

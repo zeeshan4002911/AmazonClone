@@ -1,5 +1,5 @@
-<div class="d-flex flex-column align-items-center">
-  <div class="my-3 cursor-pointer" routerLink="/home">
+<div class="d-flex flex-column" id="signin">
+  <div class="my-3 cursor-pointer text-center" routerLink="/home">
     <img src="assets/Amazon-black.jpg" alt="logo" width="100px" />
     <span class="pl-1">.in</span>
   </div>
@@ -9,7 +9,7 @@
     </div>
     <label for="email-number">Email or mobile phone number</label>
     <input
-      class="form-control mb-2"
+      class="form-control"
       formControlName="email_number"
       autofocus
       type="text"
@@ -17,12 +17,12 @@
     />
     <div
       *ngIf="email_number?.invalid && email_number?.touched"
-      class="my-2 red-cl"
+      class="mt-2 red-cl"
     >
       <div *ngIf="email_number?.errors?.required">Email is required</div>
       <div *ngIf="email_number?.errors?.email">Invalid email format</div>
     </div>
-    <label for="password">Password</label>
+    <label for="password" class="mt-2">Password</label>
     <div class="input-group">
       <input
         class="form-control"
@@ -40,7 +40,7 @@
         <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
       </button>
     </div>
-    <div *ngIf="password?.invalid && password?.touched" class="my-2 red-cl">
+    <div *ngIf="password?.invalid && password?.touched" class="mt-2 red-cl">
       <div *ngIf="password?.errors?.required">Password is required</div>
       <div *ngIf="password?.errors?.pattern">
         <ng-container *ngTemplateOutlet="passwordError"></ng-container>
@@ -54,10 +54,7 @@
     </div>
     <p class="policy">
       By continuing, you agree to Amazon's
-      <a href="#"
-        >Conditions of <br />
-        Use</a
-      >
+      <a href="#">Conditions of Use</a>
       and <a href="#">Privacy Notice</a>.
     </p>
 
@@ -70,11 +67,8 @@
 </ng-template>
 
 <ng-template #passwordError>
-  <div>
-    Password should be atleast <br />
-    Eight characters long <br />
-    One Uppercase <br />
-    One lowercase <br />
-    One special character.
+  <div class="text-center">
+    Password should be minimum 8 characters and should contain letters, numbers
+    and special character.
   </div>
 </ng-template>

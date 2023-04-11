@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { products, carouselData } from 'src/app/services/search.service';
 import { ICarousel, IProduct } from 'src/app/model/interface';
@@ -8,9 +8,9 @@ import { ICarousel, IProduct } from 'src/app/model/interface';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   declare auth: any;
-  loading: boolean = false;
+  loading: boolean | undefined = false;
 
   constructor(config: NgbCarouselConfig) {
     config.showNavigationIndicators = false;
@@ -28,5 +28,9 @@ export class HomeComponent implements OnInit {
     window.localStorage.removeItem('auth');
     this.loading = true;
     setTimeout(() => location.reload(), 1000);
+  }
+
+  ngOnDestroy(): void {
+    this.auth = this.loading = undefined;
   }
 }

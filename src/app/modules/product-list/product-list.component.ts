@@ -28,8 +28,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
   private searchKey: Subscription;
-  products: IProduct[] = [];
-  searchValue: string = '';
+  products: IProduct[] | undefined = [];
+  searchValue: string | undefined = '';
 
   constructor(
     private search: SearchService,
@@ -52,5 +52,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
     this.searchKey.unsubscribe();
+    this.products = this.searchValue = undefined;
   }
 }
