@@ -4,6 +4,7 @@ import { StarRatingService } from 'src/app/services/star-rating.service';
 import { SearchService } from 'src/app/services/search.service';
 import { Subscription } from 'rxjs';
 import { IProduct } from 'src/app/model/interface';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-list',
@@ -34,14 +35,16 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(
     private search: SearchService,
     private router: Router,
-    public star: StarRatingService
+    public star: StarRatingService,
+    private titleService: Title
   ) {
     this.subscription = this.search.sharedData$.subscribe(
       (data) => (this.products = data)
     );
-    this.searchKey = this.search.search.subscribe(
-      (data) => (this.searchValue = data)
-    );
+    this.searchKey = this.search.search.subscribe((data) => {
+      this.searchValue = data;
+      this.titleService.setTitle(`AmazonClone: ${data}`);
+    });
 
     // for redirecting to home on reload
     if (!this.searchValue) this.router.navigate(['/home']);

@@ -10,6 +10,7 @@ import {
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { users } from 'src/app/defaultData/userData';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-in',
@@ -23,7 +24,9 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
   show: boolean | undefined = false;
   @ViewChild('password_ref') password_ref!: ElementRef | undefined;
 
-  constructor(private router: Router, private renderer: Renderer2) {}
+  constructor(private router: Router, private renderer: Renderer2, private titleService: Title) {
+    this.titleService.setTitle('AmazonClone Sign In');
+  }
 
   ngOnInit(): void {
     const passwordRegex =

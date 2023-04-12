@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { IProduct } from 'src/app/model/interface';
 import { CartService } from 'src/app/services/cart.service';
+import { Title } from '@angular/platform-browser';
 
 declare let $: any;
 
@@ -18,7 +19,9 @@ declare let $: any;
 export class CartComponent
   implements OnInit, AfterViewInit, DoCheck, OnDestroy
 {
-  constructor(private cart: CartService) {}
+  constructor(private cart: CartService, private titleService: Title) {
+    this.titleService.setTitle('AmazonClone Shopping Cart')
+  }
   totalQty: number | undefined = 0;
   totalPrice: number | undefined = 0;
   declare items: IProduct[] | undefined;

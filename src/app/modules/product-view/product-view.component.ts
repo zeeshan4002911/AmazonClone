@@ -4,6 +4,7 @@ import { IProduct } from 'src/app/model/interface';
 import { CartService } from 'src/app/services/cart.service';
 import { products } from 'src/app/services/search.service';
 import { StarRatingService } from 'src/app/services/star-rating.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-view',
@@ -18,13 +19,15 @@ export class ProductViewComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private cart: CartService,
-    public star: StarRatingService
+    public star: StarRatingService,
+    private titleService: Title
   ) {}
 
   ngOnInit(): void {
     // Getting product name and id from url parameters
     this.route.params.subscribe((params) => {
       this.name = params.name;
+      this.titleService.setTitle(params.name);
       this.id = params.id;
       this.product = products.filter(
         (obj) => obj.id === Number(this.id) && obj.name === this.name
