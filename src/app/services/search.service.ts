@@ -11,7 +11,8 @@ import { IProduct } from '../model/interface';
 })
 export class SearchService {
 
-  products: IProduct[] = defaultProducts;
+  products: IProduct[] = defaultProducts // change to [] for no default products;
+
   private sharedDataSubject = new BehaviorSubject<any>([]);
   sharedData$ = this.sharedDataSubject.asObservable();
   private searchSubject = new BehaviorSubject<any>(null);

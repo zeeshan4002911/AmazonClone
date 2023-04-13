@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.products = this.fetchService.products;
 
     this.fetchService.fetchedData().subscribe((response: any) => {
-      console.log(response);
       if (response?.status == 'Success') {
         this.fetchService.setFetchedData(response?.data);
         this.products = response?.data;
