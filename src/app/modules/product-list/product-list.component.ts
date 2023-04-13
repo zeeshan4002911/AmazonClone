@@ -41,7 +41,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.subscription = this.search.sharedData$.subscribe(
       (data) => (this.products = data)
     );
-    this.searchKey = this.search.search.subscribe((data) => {
+    this.searchKey = this.search.search$.subscribe((data) => {
       this.searchValue = data;
       this.titleService.setTitle(`AmazonClone: ${data}`);
     });

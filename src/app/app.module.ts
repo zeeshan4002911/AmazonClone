@@ -19,6 +19,7 @@ import { SearchService } from './services/search.service';
 import { CartService } from './services/cart.service';
 import { StarRatingService } from './services/star-rating.service';
 import { ProductViewModule } from './modules/product-view/product-view.module';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -42,8 +43,9 @@ import { ProductViewModule } from './modules/product-view/product-view.module';
     FormsModule,
     ReactiveFormsModule,
     ProductViewModule,
+    HttpClientModule
   ],
   providers: [SearchService, CartService, StarRatingService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

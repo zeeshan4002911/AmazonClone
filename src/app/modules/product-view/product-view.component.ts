@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/model/interface';
 import { CartService } from 'src/app/services/cart.service';
-import { products } from 'src/app/services/search.service';
+import { SearchService } from 'src/app/services/search.service';
 import { StarRatingService } from 'src/app/services/star-rating.service';
 import { Title } from '@angular/platform-browser';
 
@@ -20,7 +20,8 @@ export class ProductViewComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private cart: CartService,
     public star: StarRatingService,
-    private titleService: Title
+    private titleService: Title,
+    private fetchService: SearchService
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class ProductViewComponent implements OnInit, OnDestroy {
       this.name = params.name;
       this.titleService.setTitle(params.name);
       this.id = params.id;
-      this.product = products.filter(
+      this.product = this.fetchService.products.filter(
         (obj) => obj.id === Number(this.id) && obj.name === this.name
       )[0];
     });
