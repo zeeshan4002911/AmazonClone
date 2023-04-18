@@ -2,6 +2,12 @@
 
 live :. https://zeeshan4002911.github.io/AmazonClone/home/
 
+This is <b>Amazon clone</b> which I built while learning Angular, it covers all basic concept of Angular.
+
+Note:. This Application has API calls to AmazonClone-backend but it can be run solely too, above live link is a pure Angular Application. <br />
+This application is deployed on github pages, so manual deploy have to be done after every code change. <br />
+command:. ng deploy --base-href=https://zeeshan4002911.github.io/AmazonClone/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
 
 ## Development server
